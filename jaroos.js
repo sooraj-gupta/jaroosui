@@ -18,6 +18,10 @@ let cats = {
 	"flip":{
 		"els":[], 
 		"func": flip
+	},
+	"underline":{
+		"els":[], 
+		"func": underline
 	}
 	
 };
@@ -193,6 +197,22 @@ function flip(el)
 		var target = el.getAttribute( "target" ) == "_blank";
 			
 		el.setAttribute( "onclick", `goTo('${el.getAttribute( "href" )}', ${target});`);
+	}
+}
+
+function underline( el )
+{
+	if( el.getAttribute("data-jaroos-orientation") != null )
+	{
+		if( !el.getAttribute("data-jaroos-orientation").includes("reverse") )
+		{
+			el.classList.add( "forward" );
+		}
+		el.className += " " + el.getAttribute("data-jaroos-orientation");
+	}
+	else
+	{
+		el.classList.add( "forward" );
 	}
 }
 

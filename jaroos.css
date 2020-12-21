@@ -5,7 +5,13 @@
 {
 	--mainbutton: #ee6969;
 	--mainbuttontext: white;
+	--mainunderlinetext: black;
+	--mainunderline: #ee6969;
+	
+	--font-family:'Rubik'
 }
+
+
 
 
 
@@ -28,9 +34,9 @@ button:focus
 	outline: none
 }
 
-.fig button, .regular, .regular:focus
+.fig button, .regular, .regular:focus, .underline, .underline:focus
 {
-	font-family: 'Rubik';
+	font-family: var(--font-family);
 	text-transform: uppercase;
 	color: var(--mainbuttontext);
 	font-size: 20px;
@@ -40,6 +46,7 @@ button:focus
 	padding: 0px 15px;
 	height: 40px;
 	border-radius: 2px;
+	white-space: nowrap;
 	margin: 0;
 } 
 
@@ -60,7 +67,6 @@ button:focus
 }
 .regular:hover
 {
-	font-family: 'Rubik';
 	text-transform: uppercase;
 	color: var(--mainbuttontext);
 	font-size: 20px;
@@ -272,4 +278,99 @@ button:focus
 .reverse .flipscene:hover > .fig
 {
 	transform: rotateX(180);
+}
+
+
+
+
+
+
+
+
+
+
+/******************************** UNDERLINE *******************************/
+
+.underline
+{
+	transition: 0.2s;
+	color: var(--mainunderlinetext);
+	border: none;
+	background-color: transparent;
+	position: relative;
+	padding: 0;
+	margin: 0px 15px;
+}
+.forward.underline:after
+{
+	margin:0px;
+	content: '';
+	position: absolute;
+	left:0;
+	bottom:3px;
+	width: 0%;
+	height: 3px;
+	transition: 0.25s ease;
+	//transition-timing-function: cubic-bezier(0.2, 1.2, 0.8,1.0);
+	background-color: var(--mainunderline);
+}
+.half.forward.underline:after
+{
+	width: 50%;
+}
+.right.underline:after, .underline.mid:after
+{
+	right: 0;
+	left: auto;
+}
+.underline.mid:after
+{
+	margin-right: 50%;
+}
+.half.underline.mid:after
+{
+	margin-right: 25%;
+}
+.forward.underline:hover:after
+{
+	width: 100%;
+	margin: 0;
+}
+.reverse.underline:after
+{
+	margin:0px;
+	content: '';
+	position: absolute;
+	left:0;
+	bottom:3px;
+	width: 100%;
+	height: 3px;
+	transition: 0.25s ease;
+	//transition-timing-function: cubic-bezier(0.2, 1.2, 0.8,1.0);
+	background-color: var(--mainunderline);
+}
+.reverse.underline:hover:after
+{
+	width: 0%;
+}
+.half.reverse.underline:hover:after
+{
+	width: 50%;
+}
+.half.mid.reverse.underline:after
+{
+	margin-right: 0%;
+}
+.reverse.right.underline:after, .reverse.underline.mid:after
+{
+	right: 0;
+	left: auto;
+}
+.reverse.mid.underline:hover:after
+{
+	margin-right: 50%;
+}
+.half.reverse.mid.underline:hover:after
+{
+	margin-right: 25%;
 }
