@@ -214,6 +214,9 @@ function underline( el )
 	{
 		el.classList.add( "forward" );
 	}
+	var target = el.getAttribute( "target" ) == "_blank";	
+	if( el.getAttribute( "href" ) != null )
+		el.setAttribute( "onclick", `goTo('${el.getAttribute( "href" )}', ${target});`);
 }
 
 init();
