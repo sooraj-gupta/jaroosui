@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+
+:root
+{
+	--mainbutton: #ee6969;
+	--mainbuttontext: white;
+}
+
+
+
+/************************* GENERAL *************************************/
+.button, .button:hover, .button:focus
+{
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding: 0;
+	margin: 0;
+}
+
+button:hover
+{
+	cursor: pointer;
+}
+button:focus
+{
+	outline: none
+}
+
+.fig button, .regular, .regular:focus
+{
+	font-family: 'Rubik';
+	text-transform: uppercase;
+	color: var(--mainbuttontext);
+	font-size: 20px;
+	font-weight: 500;
+	border: 0px solid var(--mainbuttontext);
+	background-color: var(--mainbutton);
+	padding: 0px 15px;
+	height: 40px;
+	border-radius: 2px;
+	margin: 0;
+} 
+
+
+
+
+
+
+
+
+
+
+/*********************************** REGULAR ********************************/
+.regular
+{
+	transition: 0.2s;
+	margin: 0px 10px;
+}
+.regular:hover
+{
+	font-family: 'Rubik';
+	text-transform: uppercase;
+	color: var(--mainbuttontext);
+	font-size: 20px;
+	font-weight: 500;
+	border: 0px solid var(--mainbuttontext);
+	background-color: var(--darkbutton);
+	padding: 0px 15px;
+	height: 40px;
+	border-radius: 2px;
+	margin: 0px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************************** HINGE ******************************************/
+.hingescene
+{
+	width: auto;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+	margin: 0;
+}
+.hingescene .fig
+{
+	width: auto;
+	position: relative;
+	transition: 0.5s;
+	transform-style: preserve-3d;
+}
+.hingescene .fig .face
+{
+	width: auto;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.4, 1, 0.7, 1.2)
+}
+.hingescene .fig .title
+{
+	transition: 0.2s;
+	white-space: nowrap;
+	transform: rotateX(0deg) translateZ(20px);
+}
+.hingescene .fig .msg
+{
+	font-size: 14px;
+	padding: 0px 8px;
+	height: 25px;
+	opacity: 0;
+	background-color: var(--lightbutton);
+	transform: rotateX(-180deg) translateZ(21px)
+}
+
+.hingescene .fig:hover > .title
+{
+	background-color: var(--darkbutton);
+}
+
+.hinge:hover .msg
+{
+	opacity: 1;
+	transform: rotateX(-0deg) translateZ(20px) translateY(41px)
+}
+
+
+
+
+
+
+
+
+
+/******************************* HALF/FULL ROTATION *****************************/
+.halfrotscene, .fullrotscene
+{
+	//width: auto;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+	margin: 0;
+}
+.halfrotscene .fig, .fullrotscene .fig
+{
+	//width: auto;
+	position: relative;
+	transition: 0.35s;
+	transform-style: preserve-3d;
+	transition-timing-function: cubic-bezier(0.4, 1, 0.7, 1.0);
+}
+.halfrotscene .fig
+{
+	transition: 0.25s;
+}
+.halfrotscene .fig .face, .fullrotscene .fig .face
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.halfrotscene .fig .title, .fullrotscene .fig .title
+{
+	white-space: nowrap;
+	transform: rotateX(0deg) translateZ(20px) translateY(0px);
+	
+}
+.reverse .halfrotscene .fig .msg, .reverse .fullrotscene .fig .msg
+{
+	background-color: var(--lightbutton);
+	transform: rotateX(-90deg) translateZ(19.1px) translateY(0px);
+}
+.reverse .halfrotscene .fig .title, .reverse .fullrotscene .fig .title
+{
+	background-color: var(--mainbutton);
+}
+.halfrotscene .fig .msg, .fullrotscene .fig .msg
+{
+	white-space: nowrap;
+	background-color: var(--lightbutton);
+	transform: rotateX(90deg) translateZ(19.1px) translateY(0px);
+	
+}
+.halfrotscene:hover .fig
+{
+	opacity: 1;
+	transform: rotateX(-45deg);
+}
+.reverse .halfrotscene:hover > .fig
+{
+	transform: rotateX(45deg);
+}
+
+.fullrotscene:hover .fig
+{
+	opacity: 1;
+	transform: rotateX(-90deg) translateZ(20px) translateY(-20px);
+}
+.reverse .fullrotscene:hover > .fig
+{
+	transform: rotateX(90deg) translateZ(-20px) translateY(-20px);
+}
+
+
+
+
+
+
+
+
+
+/******************************** FLIP BUTTON *******************************/
+.flipscene,
+{
+	//width: auto;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+	margin: 0;
+}
+.flipscene .fig
+{
+	//width: auto;
+	position: relative;
+	transition: 0.5s;
+	transform-origin: center 20px 0px;
+	transform-style: preserve-3d;
+	transition-timing-function: cubic-bezier(0.4, 1, 0.7, 1.2);
+}
+.flipscene .fig .face
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.flipscene .fig .title
+{
+	white-space: nowrap;
+	transform: rotateX(0deg) translateZ(0) translateY(0px);
+	
+}
+.reverse .flipscene .fig .msg
+{
+	background-color: var(--mainbutton);
+	transform: rotateX(-180deg) translateZ(0.1) translateY(0px);
+}
+.reverse .flipscene .fig .title
+{
+	background-color: var(--lightbutton);
+}
+.flipscene .fig .msg
+{
+	white-space: nowrap;
+	background-color: var(--lightbutton);
+	transform: rotateX(180deg) translateZ(0.1px) translateY(0px);
+	
+}
+.flipscene:hover .fig
+{
+	opacity: 1;
+	transform: rotateX(-180deg);
+}
+.reverse .flipscene:hover > .fig
+{
+	transform: rotateX(180);
+}
