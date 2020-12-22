@@ -50,11 +50,6 @@ button:focus
 	margin: 0;
 } 
 
-.msg, .title
-{
-	display: block;
-}
-
 
 
 
@@ -65,7 +60,7 @@ button:focus
 /*********************************** REGULAR ********************************/
 .regular
 {
-	transition: 0.2s;
+/*	transition: 0.2s;*/
 	margin: 0px 10px;
 }
 .regular:hover
@@ -94,18 +89,25 @@ button:focus
 
 
 /**************************************** HINGE ******************************************/
+.hinge, .hinge:hover
+{
+	-webkit-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
 .hingescene
 {
 	width: auto;
+	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	perspective: 1000px;
-	margin: 0;
 }
 .hingescene .fig
 {
 	width: auto;
 	position: relative;
-	transition: 0.5s;
+/*	transition: 0.5s;*/
+	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
 .hingescene .fig .face
@@ -115,11 +117,13 @@ button:focus
 	left: 0;
 	top: 0;
 	transition: 0.5s;
-	transition-timing-function: cubic-bezier(0.4, 1, 0.7, 1.2)
+	transition-timing-function: cubic-bezier(0.4, 1, 0.7, 1.2);
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 }
 .hingescene .fig .title
 {
-	transition: 0.2s;
+/*	transition: 0.2s;*/
 	white-space: nowrap;
 	transform: rotateX(0deg) translateZ(20px);
 }
@@ -141,7 +145,7 @@ button:focus
 .hinge:hover .msg
 {
 	opacity: 1;
-	transform: rotateX(-0deg) translateZ(20px) translateY(41px)
+	transform: rotateX(-0deg) translateZ(20px) translateY(42px)
 }
 
 
@@ -153,7 +157,7 @@ button:focus
 
 
 /******************************* HALF/FULL ROTATION *****************************/
-.halfrotscene, .fullrotscene
+.halfrotscene, .fullrotscene, .halfrotscene:hover
 {
 	//width: auto;
 	transform-style: preserve-3d;
@@ -166,6 +170,7 @@ button:focus
 	position: relative;
 	transition: 0.35s;
 	transform-style: preserve-3d;
+	transform: rotateX(0deg) translateY(-10px);
 	transition-timing-function: cubic-bezier(0.4, 1, 0.7, 1.0);
 }
 .halfrotscene .fig

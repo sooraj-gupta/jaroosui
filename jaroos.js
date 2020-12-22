@@ -87,9 +87,11 @@ function hinge(el)
 			el.firstElementChild.firstElementChild.querySelector(".msg").style.transform = "rotateX(-0deg) translateZ(20px) translateY(41px)";
 			el.firstElementChild.firstElementChild.querySelector(".msg").style.opacity = "1";
 		}
-		console.log( el.querySelector(".title") )
+		
+		el.querySelector(".title").style.display = "block";
+		console.log( el.querySelector(".title").offsetWidth );
 		el.style.width = el.querySelector(".title").offsetWidth + "px";
-		el.style.height = el.firstElementChild.firstElementChild.firstElementChild.offsetHeight + "px";
+		el.style.height = (el.querySelector( ".title").offsetHeight) + "px";
 		var target = el.getAttribute( "target" ) == "_blank";
 			
 		el.setAttribute( "onclick", `goTo('${el.getAttribute( "href" )}', ${target});`);
@@ -219,5 +221,5 @@ function underline( el )
 	if( el.getAttribute( "href" ) != null )
 		el.setAttribute( "onclick", `goTo('${el.getAttribute( "href" )}', ${target});`);
 }
-
-init();
+if( document.body.display = "block" )
+	init();
