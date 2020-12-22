@@ -87,6 +87,7 @@ function hinge(el)
 			el.firstElementChild.firstElementChild.querySelector(".msg").style.transform = "rotateX(-0deg) translateZ(20px) translateY(41px)";
 			el.firstElementChild.firstElementChild.querySelector(".msg").style.opacity = "1";
 		}
+		console.log( el.querySelector(".title") )
 		el.style.width = el.querySelector(".title").offsetWidth + "px";
 		el.style.height = el.firstElementChild.firstElementChild.firstElementChild.offsetHeight + "px";
 		var target = el.getAttribute( "target" ) == "_blank";
