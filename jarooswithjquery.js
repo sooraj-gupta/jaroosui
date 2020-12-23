@@ -1,46 +1,42 @@
 let cats = {
-	"regular":{
+	".regular":{
 		"els":[], 
 		"func": regular
 	},
-	"hinge":{
+	".hinge":{
 		"els":[], 
 		"func": hinge
 	},
-	"halfrot":{
+	".halfrot":{
 		"els":[], 
 		"func": halfrot
 	},
-	"fullrot":{
+	".fullrot":{
 		"els":[], 
 		"func": fullrot
 	},
-	"flip":{
+	".flip":{
 		"els":[], 
 		"func": flip
 	},
-	"underline":{
+	".underline":{
 		"els":[], 
 		"func": underline
-	},
-	"fill":{
-		"els":[], 
-		"func": fillbutton
 	}
-	
 };
 function init()
 {
-	let color = parseInt(getComputedStyle( document.documentElement ).getPropertyValue( "--mainbutton" ).substring(2), 16);
+	let color = parseInt( $("html").css("--mainbutton").substring(2), 16);
 	console.log( color );
 	let light = color + parseInt( "111111", 16 );
 	console.log( light );
 	let dark = color - parseInt( "111111", 16 );
-	document.documentElement.style.setProperty( "--lightbutton", "#" + light.toString(16) );
-	document.documentElement.style.setProperty( "--darkbutton", "#" + dark.toString(16) );
+	$("html").css("--lightbutton", "#" + light.toString(16) );
+	$("html").css("--darkbutton", "#" + dark.toString(16) );
 	function getElsByClass( className )
 	{
-		cats[className].els = document.getElementsByClassName( className );
+		console.log( $(className).toArray() ) 
+		cats[className].els = $(className).toArray();
 	}
 	for( var i = 0; i < Object.keys(cats).length; i++ )
 	{
@@ -65,9 +61,9 @@ function goTo( href, tab )
 }
 function regular(el)
 {
-	el.className += " button";
-	var target = el.getAttribute( "target" ) == "_blank";
-	el.setAttribute( "onclick", `goTo('${el.getAttribute( "href" )}', ${target});`);
+	$(el).addClass("button");
+	var target = $(el).attr( "target" ) == "_blank";
+	$(el).attr( "onclick", `goTo('${$(el).attr( "href" )}', ${target});`);
 	
 }
 function hinge(el)
@@ -120,9 +116,9 @@ function halfrot(el)
 		`;
 		if( el.getAttribute( "data-jaroos-open" ) == "always" )
 		{
-			el.firstElementChild.firstElementChild.style.transform = "rotateX(-45deg) translateZ(0px) translateY(0px)";
+			el.firstElementChild.firstElementChild.style.transform = "rotateX(-45deg) translateZ(-10px) translateY(0px)";
 			if( el.getAttribute( "data-jaroos-orientation" ) == "reverse" ) {
-				el.firstElementChild.firstElementChild.style.transform = "rotateX(45deg) translateZ(0px) translateY(0px)";
+				el.firstElementChild.firstElementChild.style.transform = "rotateX(45deg) translateZ(0px) translateY(-10px)";
 			}
 		}
 		if( el.getAttribute( "data-jaroos-orientation" ) == "reverse" ) {
@@ -225,24 +221,5 @@ function underline( el )
 	if( el.getAttribute( "href" ) != null )
 		el.setAttribute( "onclick", `goTo('${el.getAttribute( "href" )}', ${target});`);
 }
-
-function fillbutton( el )
-{
-	if( el.getAttribute("data-jaroos-orientation") != null )
-	{
-		if( !el.getAttribute("data-jaroos-orientation").includes("reverse") )
-		{
-			el.classList.add( "forward" );
-		}
-		el.className += " " + el.getAttribute("data-jaroos-orientation");
-	}
-	else
-	{
-		el.classList.add( "forward" );
-	}
-	var target = el.getAttribute( "target" ) == "_blank";	
-	if( el.getAttribute( "href" ) != null )
-		el.setAttribute( "onclick", `goTo('${el.getAttribute( "href" )}', ${target});`);
-}
-if( document.body.display = "block" )
-	init();
+//if( document.body.display = "block" )
+init();
